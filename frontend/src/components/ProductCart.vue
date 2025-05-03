@@ -2,10 +2,10 @@
     <div class="products">
         <div class="image-container">
             <div style="overflow: hidden; width: 100%; height: 100%;">
-                <img src="https://www.shutterstock.com/image-photo/fried-salmon-steak-cooked-green-600nw-2489026949.jpg"
+                <img :src="props.product.url_image"
                     alt="food-image">
             </div>
-            <button class="overlay-button">
+            <button class="overlay-button" @click="$emit('addToCart', props.product)">
                 <span class="material-symbols-outlined" style="color: #F25C05; margin-right: 1rem;">
                     add_shopping_cart
                 </span>
@@ -13,14 +13,20 @@
             </button>
         </div>
         <div>
-            <p style="font-weight: 200;">Pie</p>
-            <p style="font-weight: 500; color: #25231b;">Lemon Menrigue Pie</p>
-            <p style="font-weight: 600; color: #F25C05;">$4.00</p>
+            <p style="font-weight: 200;">{{ props.product.type }}</p>
+            <p style="font-weight: 500; color: #25231b;">{{ props.product.title }}</p>
+            <p style="font-weight: 600; color: #F25C05;">${{ props.product.price.toFixed(2) }}</p>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
+import type { IProduct } from "../interface/IProduct";
+
+const props = defineProps<{
+    product: IProduct
+}>();
+
 </script>
 
 <style scoped>
