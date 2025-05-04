@@ -13,22 +13,25 @@
       <!-- <span class="material-symbols-outlined">shopping_cart_off</span> -->
       <div>
         <div v-for="(item, index) in listCart" :key="item.product.id"
-          style="display: flex; justify-content: space-between; border-bottom: solid 1px black; padding: 1rem">
+          style="display: flex; justify-content: space-between; border-bottom: solid 0.25px #25231b; padding: 1rem">
           <div>
-            <p>{{ item.product.title }}</p>
+            <p style="font-weight: 500; color: #25231b;">{{ item.product.title }}</p>
             <section style="display: flex; gap: 1rem; margin-top: 0.5rem;">
-              <p>{{ item.quantity }}x</p>
-              <p>${{ item.product.price.toFixed(2) }}</p>
-              <p>${{ item.total.toFixed(2) }}</p>
+              <p style="color: #F25C05; font-weight: 600;">{{ item.quantity }}x</p>
+              <p style="font-weight: 300; color: #25231b;">${{ item.product.price.toFixed(2) }}</p>
+              <p style="font-weight: 600; color: #25231b;">${{ item.total.toFixed(2) }}</p>
             </section>
           </div>
-          <span class="material-symbols-outlined" style="cursor: pointer; align-self: center;" @click="remove(index)" >cancel</span>
+          <span class="material-symbols-outlined" style="cursor: pointer; align-self: center;"
+            @click="remove(index)">cancel</span>
         </div>
       </div>
-      <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
-        <p>Total</p>
-         <p> {{ sumTotal().toFixed(2) }} </p>
+      <div style="display: flex; justify-content: space-between; margin-top: 1rem; align-items: center;">
+        <p style="color: #25231b; font-size: 22px;">Total</p>
+        <p style="font-weight: 800; font-size: 32px; color: #25231b;">${{ sumTotal().toFixed(2) }} </p>
       </div>
+      <button
+        style="background-color: #F25C05;color: white;border: none; padding: 1rem 1rem; border-radius: 32px; margin-top: 1rem; font-weight: 600; cursor: pointer; font-size: 18px;">Confirm Order</button>
     </div>
   </div>
 </template>
@@ -105,6 +108,7 @@ const remove = (index: number) => {
 <style scoped>
 /* PRATOS */
 .main-content {
+  background-color: #FAF0E6;
   height: 100%;
   width: 100%;
 
@@ -141,7 +145,9 @@ const remove = (index: number) => {
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  width: 30%;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+  width: 25%;
+  background-color: white;
+  border-radius: 1rem;
+  height: min-content;
 }
 </style>
